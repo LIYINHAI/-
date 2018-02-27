@@ -11,6 +11,10 @@ namespace ConsoleApplication1
         static void Main(string[] args)
         {
            int  n=0;
+            if(n>=0)
+            {
+                
+            }
         }
     }
 }
