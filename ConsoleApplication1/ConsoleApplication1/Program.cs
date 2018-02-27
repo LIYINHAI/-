@@ -14,6 +14,7 @@ namespace ConsoleApplication1
             if(n>=0)
             {
                 你好
+                你也好啊；
                 
             }
         }
