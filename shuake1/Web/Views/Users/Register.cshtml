@@ -1,0 +1,82 @@
+﻿@model Web.Models.UserInfo
+@{
+    ViewBag.Title = "用户注册";
+}
+
+<div id="wrap">
+    <div id="main">
+        <div id="header">
+            <div id="header_header"></div>
+            <div id="header_footer">
+                已经注册过账号？@Html.ActionLink("登录", "Login", "Users")
+            </div>
+        </div>
+        @using (Html.BeginForm("Register", "Users", FormMethod.Post))
+        {
+            <div id="body_username" class="form-group">
+            @Html.TextBoxFor(user => user.UserName, new
+           {
+               @class = "form-control",
+               placeholder = "用户名  (限6-16个字符，支持中英文、数字、减号或下划线)"@*, data-toggle = "tooltip", data-placement = "right", data-original-title = "限16个字符，支持中英文、数字、减号或下划线"*@ })
+            </div>
+            <div class='row CheckUserName'>
+                <div class='col-md-12'>
+                    @Html.ValidationMessageFor(user => user.UserName, "", new { style = "color:#1E90FF;" })
+                </div>
+            </div>
+
+            <div id="body_password" class="form-group">
+                @Html.PasswordFor(user => user.Password, new
+           {
+               @class = "form-control",
+               placeholder = "密码         (6-20 位的任意字母、数字、字符组合)"@*, data-toggle = "tooltip", data-placement = "right", data-original-title = "6-20 位的任意字母、数字、字符组合"*@ 
+           })
+                @Html.ValidationMessageFor(user => user.Password, "", new { style = "color:#1E90FF;" })
+
+                <div id="body_phone" class="form-group">
+                    @Html.TextBoxFor(user => user.Phone, new
+               {
+                   @class = "form-control",
+                   placeholder = "手机号码   (请输入有效的大陆手机号)"@*, data-toggle="tooltip" ,data-placement="right", data-original-title="请输入大陆手机号"*@ 
+               })
+                    @Html.ValidationMessageFor(user => user.Phone, "", new { style = "color:#1E90FF;" })
+                </div>
+                <div class="row">
+                    <div id="body_email" class="form-group col-sm-8">
+                        @Html.TextBoxFor(user => user.Email, new
+                   {
+                       @class = "form-control",
+                       placeholder = "电子邮箱   (格式如xxxx@xxx.com)",
+                       width = "200",
+                       style = "display:inline-block;" @*,data-toggle = "tooltip" ,data - placement = "right" ,data - original - title = "格式如xxxx@xxx.com"*@ 
+                   })
+                    </div>
+                    <div class="row code">
+                        <div class="col-md-12">
+                            @Html.ValidationMessageFor(user => user.Email, "", new { style = "color:#1E90FF;" })
+                        </div>
+                    </div>                  
+
+                    <!--注册按钮-->
+                    <div id="body_register">
+                        <p>
+                            <input type="submit" name="Register" value="注册" class="btn btn-primary btn-block" />
+                        </p>
+                    </div>
+                    <div id="footer">
+                        <div id="footer_link">
+                            <label class="checkbox-inline">
+                                @Html.CheckBox("Agree", true)<span>我同意</span>
+                                @Html.ActionLink("《用户协议及版权声明》", "Copy", "Users")
+                            </label>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        }
+    </div>
+</div>
+
+
+
+
